@@ -24,7 +24,7 @@
   <Filter />
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 col-sm-12 col-lg-12">
         <List v-for="(list, idx) in lists" :key="idx" :list="list" />
       </div>
     </div>

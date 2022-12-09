@@ -19,7 +19,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-2" v-for="(tool,idx) in tools" :key="idx">
+            <div class="col-md col-xl col-sm col-lg" v-for="(tool,idx) in tools" :key="idx">
                     <Button @click.prevent="changeTools(tool)" :type="'click'" :variant="'btn btn-primary'" :name="tool"></Button>
             </div>
         </div>

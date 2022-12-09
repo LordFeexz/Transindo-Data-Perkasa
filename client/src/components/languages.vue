@@ -19,7 +19,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-2" v-for="(language,idx) in languages" :key="idx">
+            <div class="col-md" v-for="(language,idx) in languages" :key="idx">
             <Button @click.prevent="changeLanguages(language)" :type="'click'" :variant="'btn btn-primary'" :name="language"></Button>
             </div>
         </div>
