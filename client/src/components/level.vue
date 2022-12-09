@@ -2,14 +2,14 @@
     import Button from './button.vue'
     export default {
         props:['level'],
-        emits:['fetchList','changeLevel'],
+        emits:['fetchList','changeLevel','addIndicator'],
         components:{
             Button
         },
         methods:{
             changeLevel(data){
-                console.log(data)
                 this.$emit('changeLevel',data)
+                this.$emit('addIndicator', data)
                 this.$emit('fetchList')
             }
         }

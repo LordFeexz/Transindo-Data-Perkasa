@@ -5,10 +5,11 @@
             Button
         },
         props:['role'],
-        emits:['changeRole','fetchList'],
+        emits:['changeRole','fetchList','addIndicator'],
         methods:{
             changeRole(data){
                 this.$emit('changeRole',data)
+                this.$emit('addIndicator', data)
                 this.$emit('fetchList')
             }
         }

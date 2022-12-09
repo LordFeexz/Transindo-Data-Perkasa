@@ -2,13 +2,14 @@
     import Button from './button.vue'
     export default {
         props:['tools'],
-        emits:['fetchList','changeTools'],
+        emits:['fetchList','changeTools','addIndicator'],
         components:{
             Button
         },
         methods:{
-            changeRole(data){
+            changeTools(data){
                 this.$emit('changeTools',data)
+                this.$emit('addIndicator',data)
                 this.$emit('fetchList')
             }
         }
@@ -19,7 +20,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2" v-for="(tool,idx) in tools" :key="idx">
-                    <Button @click.prevent="changeRole(tool)" :type="'click'" :variant="'btn btn-primary'" :name="tool"></Button>
+                    <Button @click.prevent="changeTools(tool)" :type="'click'" :variant="'btn btn-primary'" :name="tool"></Button>
             </div>
         </div>
     </div>

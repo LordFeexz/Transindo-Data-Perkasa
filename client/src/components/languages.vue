@@ -2,13 +2,14 @@
     import Button from './button.vue'
     export default {
         props:['languages'],
-        emits:['fetchList','changeLanguages'],
+        emits:['fetchList','changeLanguages','addIndicator'],
         components:{
             Button
         },
         methods:{
             changeLanguages(data){
                 this.$emit('changeLanguages',data)
+                this.$emit('addIndicator', data)
                 this.$emit('fetchList')
             }
         }

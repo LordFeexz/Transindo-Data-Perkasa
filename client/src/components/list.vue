@@ -17,7 +17,7 @@
             ...mapWritableState(useDataStore,['params'])
         },
         methods:{
-            ...mapActions(useDataStore,['fetchList','changeLanguages','changeLevel','changeRole','changeTools'])
+            ...mapActions(useDataStore,['fetchList','changeLanguages','changeLevel','changeRole','changeTools','addIndicator'])
         }
     }
 </script>
@@ -64,16 +64,32 @@
                                 </div>
                                 <div class="col-md-6 desc">
                                     <div v-if="list.role">
-                                        <Role :role="list.role" @changeRole="changeRole" @fetchList="fetchList"/>
+                                        <Role 
+                                        :role="list.role" 
+                                        @changeRole="changeRole"
+                                        @fetchList="fetchList" 
+                                        @addIndicator="addIndicator"/>
                                     </div>
                                     <div v-if="list.level">
-                                        <Level :level="list.level" @changeLevel="changeLevel" @fetchList="fetchList"/>
+                                        <Level 
+                                        :level="list.level" 
+                                        @changeLevel="changeLevel" 
+                                        @fetchList="fetchList" 
+                                        @addIndicator="addIndicator"/>
                                     </div>
                                     <div v-if="list.languages.length > 0">
-                                        <Languages :languages="list.languages" @changeLanguages="changeLanguages" @fetchList="fetchList"/>
+                                        <Languages 
+                                        :languages="list.languages"
+                                        @changeLanguages="changeLanguages" 
+                                        @fetchList="fetchList"
+                                        @addIndicator="addIndicator"/>
                                     </div>
                                     <div v-if="list.tools.length > 0">
-                                        <Tools :tools="list.tools" @changeTools="changeTools" @fetchList="fetchList"/>
+                                        <Tools 
+                                        :tools="list.tools" 
+                                        @changeTools="changeTools" 
+                                        @fetchList="fetchList" 
+                                        @addIndicator="addIndicator"/>
                                     </div>
                                 </div>
                             </div>

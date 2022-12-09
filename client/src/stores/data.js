@@ -13,6 +13,7 @@ export const useDataStore = defineStore("data", {
       languages: null,
       tools: null,
     },
+    indicators: [],
   }),
   actions: {
     async fetchList() {
@@ -47,6 +48,16 @@ export const useDataStore = defineStore("data", {
     },
     changeTools(data) {
       this.params.tools = data;
+    },
+    removeParams() {
+      this.params.role = null;
+      this.params.level = null;
+      this.params.languages = null;
+      this.params.tools = null;
+      this.indicators = [];
+    },
+    addIndicator(data) {
+      this.indicators.push(data);
     },
   },
 });
