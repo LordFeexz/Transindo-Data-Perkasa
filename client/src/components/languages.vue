@@ -1,6 +1,17 @@
 <script>
+    import Button from './button.vue'
     export default {
-        props:['languages']
+        props:['languages'],
+        emits:['fetchList','changeLanguages'],
+        components:{
+            Button
+        },
+        methods:{
+            changeLanguages(data){
+                this.$emit('changeLanguages',data)
+                this.$emit('fetchList')
+            }
+        }
     }
 </script>
 
@@ -8,7 +19,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2" v-for="(language,idx) in languages" :key="idx">
-                <h5>{{language}}</h5>
+            <Button @click.prevent="changeLanguages(language)" :type="'click'" :variant="'btn btn-primary'" :name="language"></Button>
             </div>
         </div>
     </div>

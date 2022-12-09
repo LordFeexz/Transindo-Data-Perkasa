@@ -3,6 +3,8 @@
     import Level from './level.vue'
     import Languages from './languages.vue'
     import Tools from './tools.vue'
+    import { useDataStore } from '../stores/data'
+    import { mapActions, mapWritableState } from 'pinia'
     export default {
         props:['list'],
         components:{
@@ -10,6 +12,12 @@
             Level,
             Languages,
             Tools
+        },
+        computed:{
+            ...mapWritableState(useDataStore,['params'])
+        },
+        methods:{
+            ...mapActions(useDataStore,['fetchList','changeLanguages','changeLevel','changeRole','changeTools'])
         }
     }
 </script>
@@ -54,18 +62,18 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 desc">
                                     <div v-if="list.role">
-                                        <Role :role="list.role" />
+                                        <Role :role="list.role" @changeRole="changeRole" @fetchList="fetchList"/>
                                     </div>
                                     <div v-if="list.level">
-                                        <Level :level="list.level" />
+                                        <Level :level="list.level" @changeLevel="changeLevel" @fetchList="fetchList"/>
                                     </div>
                                     <div v-if="list.languages.length > 0">
-                                        <Languages :languages="list.languages"/>
+                                        <Languages :languages="list.languages" @changeLanguages="changeLanguages" @fetchList="fetchList"/>
                                     </div>
                                     <div v-if="list.tools.length > 0">
-                                        <Tools :tools="list.tools"/>
+                                        <Tools :tools="list.tools" @changeTools="changeTools" @fetchList="fetchList"/>
                                     </div>
                                 </div>
                             </div>
@@ -83,5 +91,11 @@
     }
     .bodyy {
         margin: 15px;
+    }
+    .desc {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 80px;
     }
 </style>

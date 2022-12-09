@@ -1,9 +1,20 @@
 <script>
+    import Button from './button.vue'
     export default {
-        props:['role']
+        components:{
+            Button
+        },
+        props:['role'],
+        emits:['changeRole','fetchList'],
+        methods:{
+            changeRole(data){
+                this.$emit('changeRole',data)
+                this.$emit('fetchList')
+            }
+        }
     }
 </script>
 
 <template>
-    <h5>{{role}}</h5>
+    <Button @click.prevent="changeRole(role)" :type="'click'" :variant="'btn btn-primary'" :name="role"></Button>
 </template>

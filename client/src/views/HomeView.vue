@@ -1,10 +1,12 @@
 <script>
   import List from '@/components/list.vue'
+  import Filter from '@/components/filter.vue'
   import {mapState,mapActions} from 'pinia'
   import {useDataStore} from '../stores/data'
   export default {
     components:{
-      List
+      List,
+      Filter
     },
     computed:{
       ...mapState(useDataStore,['lists'])
@@ -19,6 +21,7 @@
 </script>
 
 <template>
+  <Filter />
   <div class="container">
     <div class="row">
       <div class="col-md-12">
